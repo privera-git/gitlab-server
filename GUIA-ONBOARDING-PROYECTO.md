@@ -49,6 +49,18 @@ git push local --all
 
 > Si el proyecto aún no tiene remote, usar `local` como nombre o `origin` directamente — es indistinto.
 
+**Problema frecuente: `shallow update not allowed`**
+
+Si el repositorio fue clonado con `--depth` (shallow clone), GitLab rechazará el push porque no puede construir el historial completo. Solución: completar el historial antes de hacer el push.
+
+```bash
+# Completar el historial desde el remote de origen
+git fetch --unshallow origin
+
+# Reintentar el push
+git push local --all
+```
+
 ---
 
 ## 3. Registrar un GitLab Runner
