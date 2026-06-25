@@ -63,6 +63,12 @@ Todas las variables se definen en `.env` (generado por `make install` a partir d
 
 > `GITLAB_EXTERNAL_URL` y `GITLAB_HTTP_PORT` deben coincidir. Si se cambia el puerto, actualizar ambas variables.
 
+## Conectar un proyecto existente
+
+Ver [`GUIA-ONBOARDING-PROYECTO.md`](./GUIA-ONBOARDING-PROYECTO.md) para instrucciones paso a paso sobre cómo subir un repositorio existente, registrar un runner y ejecutar un primer pipeline de prueba.
+
+---
+
 ## Datos persistentes
 
 Los volúmenes se almacenan en el directorio definido por `GITLAB_HOME`:
