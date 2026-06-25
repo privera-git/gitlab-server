@@ -86,7 +86,7 @@ Ejecutar el siguiente comando reemplazando `<TOKEN>` con el valor obtenido en el
 
 ```bash
 docker run --rm \
-  -v ~/.gitlab-runner:/etc/gitlab-runner \
+  -v ~/.gitlab-runner/config:/etc/gitlab-runner \
   gitlab/gitlab-runner register \
   --non-interactive \
   --url "http://host.docker.internal:8929" \
@@ -97,9 +97,9 @@ docker run --rm \
   --description "Local Docker Runner"
 ```
 
-Esto genera el archivo de configuración en `~/.gitlab-runner/config.toml`.
+Esto genera el archivo de configuración en `~/.gitlab-runner/config/config.toml`.
 
-> **En macOS**, Docker Desktop solo permite montar rutas bajo `/Users`, `/tmp` y similares. Rutas como `/srv` requieren habilitarse manualmente en **Docker Desktop → Settings → Resources → File Sharing**. Usar `~/.gitlab-runner` evita esa fricción.
+> **En macOS**, Docker Desktop solo permite montar rutas bajo `/Users`, `/tmp` y similares. Rutas como `/srv` requieren habilitarse manualmente en **Docker Desktop → Settings → Resources → File Sharing**. Usar `~/.gitlab-runner/config` evita esa fricción.
 
 ### 3.3 Levantar el runner
 
@@ -107,7 +107,7 @@ Esto genera el archivo de configuración en `~/.gitlab-runner/config.toml`.
 docker run -d \
   --name gitlab-runner \
   --restart always \
-  -v ~/.gitlab-runner:/etc/gitlab-runner \
+  -v ~/.gitlab-runner/config:/etc/gitlab-runner \
   -v /var/run/docker.sock:/var/run/docker.sock \
   gitlab/gitlab-runner:latest
 ```
